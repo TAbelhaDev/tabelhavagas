@@ -17,6 +17,7 @@ type Job struct {
 	Description string   `json:"description,omitempty"`
 	Score       int      `json:"score,omitempty"`
 	Vetoed      bool     `json:"vetoed,omitempty"`
+	Notified    bool     `json:"notified,omitempty"`
 }
 
 func (j Job) key() string {

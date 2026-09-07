@@ -218,7 +218,7 @@ func (s *Store) topUnnotified(n int) ([]Job, error) {
 // topFiltered returns up to n scored jobs, optionally filtered by a minimum
 // score, excluding jobs already notified, and/or including vetoed jobs.
 func (s *Store) topFiltered(n, minScore int, onlyUnnotified, includeVetoed bool) ([]Job, error) {
-	q := `SELECT source, id, url, title, company, location, remote, type, deadline, salary, description, raw, score, vetoed
+	q := `SELECT source, id, url, title, company, location, remote, type, deadline, salary, description, raw, score, vetoed, notified
 		FROM jobs WHERE score IS NOT NULL`
 	args := []any{}
 	if minScore > 0 {
@@ -356,7 +356,7 @@ func scoreAllLLMProgress(s *Store, sc Scorer, onJob func(done, total int)) ([]Jo
 }
 
 func (s *Store) all() ([]Job, error) {
-	rows, err := s.db.Query(`SELECT source, id, url, title, company, location, remote, type, deadline, salary, description, raw, score, vetoed FROM jobs`)
+	rows, err := s.db.Query(`SELECT source, id, url, title, company, location, remote, type, deadline, salary, description, raw, score, vetoed, notified FROM jobs`)
 	if err != nil {
 		return nil, err
 	}
@@ -374,14 +374,15 @@ func (s *Store) all() ([]Job, error) {
 
 func scanJob(rows *sql.Rows) (Job, error) {
 	var j Job
-	var remote, vetoed int
+	var remote, vetoed, notified int
 	var score sql.NullInt64
 	var salary, description, raw sql.NullString
-	if err := rows.Scan(&j.Source, &j.ID, &j.URL, &j.Title, &j.Company, &j.Location, &remote, &j.Type, &j.Deadline, &salary, &description, &raw, &score, &vetoed); err != nil {
+	if err := rows.Scan(&j.Source, &j.ID, &j.URL, &j.Title, &j.Company, &j.Location, &remote, &j.Type, &j.Deadline, &salary, &description, &raw, &score, &vetoed, &notified); err != nil {
 		return j, err
 	}
 	j.Remote = remote == 1
 	j.Vetoed = vetoed == 1
+	j.Notified = notified == 1
 	j.Salary = salary.String
 	j.Description = description.String
 	j.Raw = raw.String

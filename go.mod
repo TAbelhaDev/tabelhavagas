@@ -5,12 +5,15 @@ go 1.26.1
 require (
 	github.com/BurntSushi/toml v1.6.0
 	github.com/PuerkitoBio/goquery v1.12.0
+	github.com/TAbelhaDev/tabelhascaff v0.0.0-00010101000000-000000000000
 	github.com/TAbelhaDev/tabelhatuiui v0.5.0
 	github.com/charmbracelet/bubbles v1.0.0
 	github.com/charmbracelet/bubbletea v1.3.10
 	github.com/charmbracelet/lipgloss v1.1.0
 	modernc.org/sqlite v1.56.0
 )
+
+replace github.com/TAbelhaDev/tabelhascaff => /home/ianptkcs/codigo/tabelhadev/tabelhascaff
 
 require (
 	github.com/andybalholm/cascadia v1.3.3 // indirect

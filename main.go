@@ -107,6 +107,8 @@ func main() {
 	f := parseFlags(flagsArgs)
 
 	switch cmd {
+	case "ipc":
+		os.Exit(runIPC(flagsArgs))
 	case "sources":
 		printSources()
 	case "collect":
