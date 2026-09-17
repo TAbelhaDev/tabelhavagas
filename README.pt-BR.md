@@ -5,9 +5,9 @@
 [English](README.md) · **Português**
 
 [![Go Version](https://img.shields.io/github/go-mod/go-version/TAbelhaDev/tabelhavagas?style=flat-square&logo=go&logoColor=white&color=00ADD8)](go.mod)
-[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)
 [![Built with Bubble Tea](https://img.shields.io/badge/built%20with-Bubble%20Tea-ff69b4?style=flat-square)](https://github.com/charmbracelet/bubbletea)
 [![Powered by tabelhatuiui](https://img.shields.io/badge/theme-tabelhatuiui-d6b4f7?style=flat-square)](https://github.com/TAbelhaDev/tabelhatuiui)
+[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)](LICENSE)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/ianptkcs)
 
@@ -103,14 +103,24 @@ Sem o arquivo (ou sem a seção), a fonte não roda. O dedup é por
 ## Como instalar
 
 ```bash
-go install github.com/TAbelhaDev/tabelhavagas@latest
+go install github.com/TAbelhaDev/tabelhavagas/cmd/tavagas@latest
 ```
 
-Isso instala o binário como `tabelhavagas` (nome do módulo). Pra ter o nome curto `tavagas`
-usado no resto deste README, compile a partir do source:
-`git clone https://github.com/TAbelhaDev/tabelhavagas.git && cd tabelhavagas && go build -o tavagas .`
+Ou compile a partir do source:
+`git clone https://github.com/TAbelhaDev/tabelhavagas.git && cd tabelhavagas && go build -o tavagas ./cmd/tavagas`
 
 DB vai para `~/.local/state/tabelhavagas/vagas.db` (SQLite, driver puro Go).
+
+### Desenvolvimento local
+
+Um hook `post-commit` em `.githooks/` reconstrói e reinstala o `tavagas` em
+`~/.local/bin/tavagas` a cada commit, então o comando local nunca fica
+desatualizado. O git não ativa o `.githooks/` de um repo sozinho — rode isso
+uma vez por clone:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## Perfis
 

@@ -15,7 +15,7 @@ LOG_FILE="$LOG_DIR/${JOB_NAME}.log"
 # Check if tavagas is installed
 if ! command -v tavagas &>/dev/null; then
     echo "erro: tavagas não encontrado no PATH" >&2
-    echo "instale com: go build -o ~/.local/bin/tavagas . (dentro do repo tabelhavagas)" >&2
+    echo "instale com: go build -o ~/.local/bin/tavagas ./cmd/tavagas (dentro do repo tabelhavagas)" >&2
     exit 1
 fi
 
