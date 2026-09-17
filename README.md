@@ -60,7 +60,7 @@ posting is highlighted full-width in the accent colour.
 | `L`        | activity log (collect/veto/notify/profile) — last 7 days        |
 | `enter`    | opens the posting in the browser                                |
 | `c`        | collects with a spinner and per-source progress, then re-scores |
-| `n`        | notifies the top 5 through DMS                                  |
+| `b`        | notifies the top 5 through DMS                                  |
 | `r`        | reloads from SQLite                                             |
 | `q`        | quits                                                           |
 

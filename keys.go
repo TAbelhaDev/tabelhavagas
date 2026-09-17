@@ -15,11 +15,11 @@ var reg = tuiui.NewKeyRegistry(filepath.Join(tuiui.ConfigDir(), "tabelhavagas", 
 
 func init() {
 	reg.RegisterMany(
-		tuiui.Action{ID: "quit", Help: "sair", Keys: []string{"q", "ctrl+c"}},
+		tuiui.Action{ID: "quit", Help: "sair", Keys: []string{"q"}},
 		tuiui.Action{ID: "help", Help: "keybindings", Keys: []string{"?"}},
 		tuiui.Action{ID: "settings", Help: "rebind keys", Keys: []string{","}},
 		tuiui.Action{ID: "refresh", Help: "recarregar", Keys: []string{"r"}},
-		tuiui.Action{ID: "reload", Help: "recarregar config", Keys: []string{"f5"}},
+		tuiui.Action{ID: "reload", Help: "recarregar config", Keys: []string{"ctrl+shift+r"}},
 		tuiui.Action{ID: "filter", Help: "filtro", Keys: []string{"/"}},
 		tuiui.Action{ID: "move-down", Help: "próxima", Keys: []string{"j", "down"}, Label: "j"},
 		tuiui.Action{ID: "move-up", Help: "anterior", Keys: []string{"k", "up"}, Label: "k"},
@@ -36,7 +36,7 @@ func init() {
 		tuiui.Action{ID: "veto", Help: "vetar", Keys: []string{"x"}},
 		tuiui.Action{ID: "show-veto", Help: "vetadas", Keys: []string{"V"}},
 		tuiui.Action{ID: "collect", Help: "coletar", Keys: []string{"c"}},
-		tuiui.Action{ID: "notify", Help: "notificar", Keys: []string{"n"}},
+		tuiui.Action{ID: "notify", Help: "notificar", Keys: []string{"b"}},
 		tuiui.Action{ID: "llm", Help: "llm", Keys: []string{"m"}},
 		tuiui.Action{ID: "logs", Help: "logs", Keys: []string{"L"}},
 	)
